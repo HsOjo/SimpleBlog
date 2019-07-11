@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {include file="public/head" /}
+    <title>{block name="title"}网页标题{/block}</title>
+</head>
+
+<body>
+
+{include file="public/nav" /}
+
+<div class="container-fluid">
+    <div class="row">
+        {include file="public/left" /}
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            {block name="content"}网页内容{/block}
+        </div>
+    </div>
+</div>
+
+{include file="public/script" /}
+{block name="script"}{/block}
+</body>
+</html>

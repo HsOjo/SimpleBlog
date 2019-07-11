@@ -1,0 +1,78 @@
+{extend name="index@public/basic" /}
+
+{block name="title"}注册页{/block}
+
+{block name="content"}
+<!--
+type 用于指定控件的类型 text为文本输入框 password为密码输入框
+name 用于指定表单的键值，提交表单后，可在服务端能获取到对应的输入数据
+id 用于标记控件，只在浏览器端有效（唯一，不能重复，在css内使用" # "选择）
+class 用于标记控件，只在浏览器端有效（可以重复，在css内使用" . "选择）
+-->
+<div class="container">
+    <form method="post" action="{:url('user/register/indexPost')}" class="form-horizontal" role="form"
+          id="form-register">
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">用户名：</label>
+            <div class="col-sm-10">
+                <input type="text" name="username" id="username" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">密码：</label>
+            <div class="col-sm-10">
+                <input type="password" name="password" id="password" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <!--
+                type 为 submit 时，作用是提交表单
+                type 为 reset 时，作用是清空用户输入
+                form表单主要包含两种用户操作用的控件，主要为input和button类型
+                -->
+                <button type="submit" class="btn btn-primary">注册</button>
+                <a class="btn btn-default" href="{:url('user/login/index')}">登录</a>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+    // function registerValidate() {
+    //     let username = document.getElementById('username').value;
+    //     let password = document.getElementById('password').value;
+    //
+    //     if (username !== '' && password !== '') {
+    //         return true;
+    //     } else {
+    //         alert('用户名或密码不能为空');
+    //     }
+    //
+    //     return false;
+    // }
+
+    function registerValidate() {
+        // # 可以用来选择 id 为 xxxx 的元素（单个）
+        let username = $('#username').val();
+        let password = $('#password').val();
+
+        if (username !== '' && password !== '') {
+            return true;
+        } else {
+            alert('用户名或密码不能为空');
+        }
+
+        return false;
+    }
+
+    $('#form-register').submit(registerValidate);
+
+    // # 可以用来选择 class 为 xxxx 的元素（多个）
+    // let container = $('.container');
+    // container.hide();
+    // container.slideDown();
+</script>
+{/block}

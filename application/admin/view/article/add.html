@@ -1,0 +1,26 @@
+{extend name="public/basic" /}
+
+{block name="title"}添加文章{/block}
+
+{block name="content"}
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="{:url('admin/article/index')}">文章列表</a></li>
+    <li class="active"><a href="{:url('admin/article/add')}">添加文章</a></li>
+</ul>
+<div class="placeholder"></div>
+<form method="post" action="{:url('admin/article/addPost')}" class="form-horizontal" role="form">
+    {include file="article/form" /}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">添加</button>
+        </div>
+    </div>
+</form>
+{/block}
+
+{block name="script"}
+<script>
+    $('#user_id').val("{$logon_user.id}");
+    $('#content').css("height", 320);
+</script>
+{/block}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {include file="index@public/head" /}
+    <title>{block name="title"}网页标题{/block}</title>
+</head>
+
+<body>
+
+{include file="index@public/nav" /}
+
+{block name="content"}网页内容{/block}
+
+{include file="index@public/script" /}
+{block name="script"}{/block}
+</body>
+</html>

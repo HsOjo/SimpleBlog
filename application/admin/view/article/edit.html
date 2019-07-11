@@ -1,0 +1,28 @@
+{extend name="public/basic" /}
+
+{block name="title"}文章编辑{/block}
+
+{block name="content"}
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="{:url('admin/article/index')}">文章列表</a></li>
+    <li><a href="{:url('admin/article/add')}">添加文章</a></li>
+    <li class="active"><a href="{:url('admin/article/edit', ['id' => $item['id']])}">编辑文章</a></li>
+</ul>
+<div class="placeholder"></div>
+<form method="post" action="{:url('admin/article/editPost')}" class="form-horizontal" role="form">
+    <input type="hidden" name="id" id="id">
+    {include file="article/form" /}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">编辑</button>
+        </div>
+    </div>
+</form>
+{/block}
+
+{block name="script"}
+{include file="base@public/script"}
+<script>
+    $('#content').css("height", 320);
+</script>
+{/block}

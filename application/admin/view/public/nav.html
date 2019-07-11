@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{:url('admin/index/index')}">
+                {$site_setting.site_name | default = 'XXX Blog'} Admin
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{:url('index/index/index')}">前台首页</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="true">
+                        {$logon_user.username}
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <!--                        <li><a href="{{ url_for('admin.index') }}">xxxxx</a></li>-->
+                        <!--                        <li class="divider"></li>-->
+                        <li><a href="{:url('user/basic/logout')}">注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

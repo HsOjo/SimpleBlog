@@ -1,0 +1,25 @@
+{extend name="public/basic" /}
+
+{block name="title"}编辑友情链接{/block}
+
+{block name="content"}
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="{:url('admin/friend_link/index')}">友情链接列表</a></li>
+    <li><a href="{:url('admin/friend_link/add')}">添加友情链接</a></li>
+    <li class="active"><a href="{:url('admin/friend_link/edit', ['id' => $item['id']])}">编辑友情链接</a></li>
+</ul>
+<div class="placeholder"></div>
+<form method="post" action="{:url('admin/friend_link/editPost')}" class="form-horizontal" role="form">
+    <input type="hidden" name="id" id="id">
+    {include file="friend_link/form" /}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">编辑</button>
+        </div>
+    </div>
+</form>
+{/block}
+
+{block name="script"}
+{include file="base@public/script"}
+{/block}

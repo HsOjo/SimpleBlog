@@ -1,0 +1,10 @@
+<script>
+    function injectItemData() {
+        let item = JSON.parse("{:quote_escape($item->toJson())}");
+        for (let key in item) {
+            $('#' + key).val(item[key]);
+        }
+    }
+
+    injectItemData()
+</script>

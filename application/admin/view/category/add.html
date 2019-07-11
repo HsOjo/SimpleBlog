@@ -1,0 +1,19 @@
+{extend name="public/basic" /}
+
+{block name="title"}添加文章分类{/block}
+
+{block name="content"}
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="{:url('admin/category/index')}">文章分类列表</a></li>
+    <li class="active"><a href="{:url('admin/category/add')}">添加文章分类</a></li>
+</ul>
+<div class="placeholder"></div>
+<form method="post" action="{:url('admin/category/addPost')}" class="form-horizontal" role="form">
+    {include file="category/form" /}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">添加</button>
+        </div>
+    </div>
+</form>
+{/block}

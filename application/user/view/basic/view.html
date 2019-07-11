@@ -1,0 +1,20 @@
+{extend name="index@public/basic" /}
+
+{block name="title"}{$item.username | default="用户页"}{/block}
+
+{block name="content"}
+<div class="container">
+    <div class="blog-header">
+        <h1 class="blog-title">{$item.username | default='博客标题'}</h1>
+        <p class="lead blog-description">
+            <br/>
+            以下为联系方式：<br/>
+            邮箱：{$item.email}<br/>
+            电话：{$item.phone}<br/>
+            <br/>
+            自我介绍：<br/>
+            {$item.introduce}
+        </p>
+    </div>
+</div>
+{/block}

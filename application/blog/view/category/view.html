@@ -1,0 +1,38 @@
+{extend name="index@public/basic" /}
+
+{block name="title"}{$item.name | default="分类页"}{/block}
+
+{block name="content"}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            <div class="blog-header">
+                <h1 class="blog-title">{$item.name | default='博客标题'}</h1>
+            </div>
+            {foreach $items as $vo}
+            <div class="blog-post">
+                <h2 class="blog-post-title">
+                    <a href="{:url('blog/article/view', ['id' => $vo.id])}">
+                        {$vo.title | default="文章标题"}
+                    </a>
+                </h2>
+                <p class="blog-post-meta">
+                    于 {$vo.create_time | default="日期时间"} 由
+                    <a href="{:url('user/basic/view', ['id' => $vo.user_id])}">
+                        {$users[$vo.user_id]['username'] | default="发布者"}
+                    </a> 发布，最后更新于 {$vo.update_time | default="日期时间"}。
+                </p>
+                <p>{:mb_substr(format_plain_text($vo.content), 0, 128)}.....</p>
+            </div>
+            {/foreach}
+            {empty name="items"}
+            <p>emmmm，作者偷懒啦，并没有添加文章。</p>
+            {/empty}
+
+            <div class="pagination">{$pages}</div>
+        </div>
+        {include file="blog@public/right" /}
+    </div>
+</div>
+{include file="blog@public/footer" /}
+{/block}

@@ -1,17 +1,25 @@
 <?php
 
-namespace app\index\controller;
+
+namespace app\blog\controller;
+
 
 use app\base\controller\HomeBaseController;
 use app\blog\service\ArticleService;
+use app\blog\service\CategoryService;
 
-class Index extends HomeBaseController
+class Category extends HomeBaseController
 {
-    public function index()
+    function view()
     {
         $this->injectCommonItems();
 
+        $item_id = $this->request->param('id');
+        $item = (new CategoryService())->getItemByCol($item_id);
+        $this->assign('item', $item);
+
         $pagi = (new ArticleService())->buildModel()
+            ->where(['category_id' => $item_id])
             ->order('id', 'desc')->paginate(3);
 
         $this->assign('pages', $pagi->render());

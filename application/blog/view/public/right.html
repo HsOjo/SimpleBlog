@@ -1,0 +1,22 @@
+<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+    <div class="sidebar-module sidebar-module-inset">
+        <h4>关于</h4>
+        <p>{:format_plain_text($info_setting.about)}</p>
+    </div>
+    <div class="sidebar-module">
+        <h4>文章分类</h4>
+        <ol class="list-unstyled">
+            {foreach $categories as $vo}
+            <li><a href="{:url('blog/category/view', ['id' => $vo.id])}">{$vo.name}</a></li>
+            {/foreach}
+        </ol>
+    </div>
+    <div class="sidebar-module">
+        <h4>友情链接</h4>
+        <ol class="list-unstyled">
+            {foreach $friend_links as $vo}
+            <li><a href="{$vo.url}">{$vo.name}</a></li>
+            {/foreach}
+        </ol>
+    </div>
+</div>

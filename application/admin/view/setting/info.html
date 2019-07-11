@@ -1,0 +1,48 @@
+{extend name="public/basic" /}
+
+{block name="title"}博客设置{/block}
+
+{block name="content"}
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="{:url('admin/setting/index')}">网站设置</a></li>
+    <li class="active"><a href="{:url('admin/setting/info')}">信息设置</a></li>
+</ul>
+<div class="placeholder"></div>
+<form method="post" action="{:url('admin/setting/infoPost')}" class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="blog_title" class="col-sm-2 control-label">博客标题：</label>
+        <div class="col-sm-10">
+            <input type="text" name="info_setting[blog_title]" id="blog_title" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="blog_description" class="col-sm-2 control-label">博客描述：</label>
+        <div class="col-sm-10">
+            <textarea name="info_setting[blog_description]" id="blog_description" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="about" class="col-sm-2 control-label">“关于”信息：</label>
+        <div class="col-sm-10">
+            <textarea name="info_setting[about]" id="about" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+    </div>
+</form>
+{/block}
+
+{block name="script"}
+<script>
+    let info_setting = JSON.parse("{:quote_escape(json_encode($info_setting))}");
+    $('#blog_title').val(info_setting['blog_title']);
+    $('#blog_description').val(info_setting['blog_description']);
+
+    let about = $('#about');
+    about.val(info_setting['about']);
+    about.css("height", 128);
+</script>
+{/block}
