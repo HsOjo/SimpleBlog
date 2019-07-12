@@ -18,6 +18,7 @@ class Article extends HomeBaseController
         $item = (new ArticleService())->getItemByCol($item_id);
         $this->assign('item', $item);
 
+        // 获取当前文章评论
         $pagi = (new CommentService())->buildModel()
             ->where(['article_id' => $item_id])
             ->order('id', 'desc')->paginate();

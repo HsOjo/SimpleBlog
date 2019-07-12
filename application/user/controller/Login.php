@@ -28,7 +28,7 @@ class Login extends HomeBaseController
         $password = $this->request->post('password');
 
         if (UserService::userLogin($username, $password))
-            $this->success('登录成功');
+            $this->success('登录成功', 'index/index/index');
         else
             $this->error('登录失败，用户名或密码错误');
     }

@@ -18,6 +18,7 @@ class Category extends HomeBaseController
         $item = (new CategoryService())->getItemByCol($item_id);
         $this->assign('item', $item);
 
+        // 获取分类下的文章
         $pagi = (new ArticleService())->buildModel()
             ->where(['category_id' => $item_id])
             ->order('id', 'desc')->paginate(3);
